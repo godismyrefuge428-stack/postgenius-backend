@@ -25,13 +25,13 @@ app.post('/create-checkout-session', async (req, res) => {
 
     // Map plan to Stripe price ID
     if (plan === 'starter') {
-      priceId = 'price_1TEVOLB3CBhpw6YEXny0EGAe'; // $299/month
+      priceId = 'price_1TEeWzB3CBhpw6YEZxzP7dKV'; // $299/month
       productName = 'Starter - $299/month';
     } else if (plan === 'professional') {
-      priceId = 'price_1TEVOLB3CBhpw6YEXny0EGAf'; // $699/month
+      priceId = 'price_1TEeYQB3CBhpw6YEXkfzcoBv'; // $699/month
       productName = 'Professional - $699/month';
     } else if (plan === 'enterprise') {
-      priceId = 'price_1TEVOLB3CBhpw6YEXny0EGAg'; // $1,499/month
+      priceId = 'price_1TEeaLB3CBhpw6YE97DEH85m'; // $1,499/month
       productName = 'Enterprise - $1,499/month';
     } else {
       return res.status(400).json({ error: 'Invalid plan' });
