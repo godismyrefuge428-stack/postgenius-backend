@@ -18,6 +18,16 @@ app.get('/health', (req, res) => {
   res.json({ status: 'ok' });
 });
 
+// Debug endpoint
+app.get('/debug', (req, res) => {
+  res.json({
+    stripeKeySet: !!process.env.STRIPE_SECRET_KEY,
+    stripeKeyLength: process.env.STRIPE_SECRET_KEY ? process.env.STRIPE_SECRET_KEY.length : 0,
+    frontendUrl: process.env.FRONTEND_URL,
+    port: PORT
+  });
+});
+
 // Create checkout session
 app.post('/create-checkout-session', async (req, res) => {
   try {
