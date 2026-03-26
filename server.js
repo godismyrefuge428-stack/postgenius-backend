@@ -7,7 +7,10 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: ['https://postgenius-ai.com', 'https://sage-rugelach-5f34c3.netlify.app', 'http://localhost:3000'],
+  credentials: true
+}));
 app.use(express.json());
 
 // Health check
@@ -52,8 +55,9 @@ app.post('/create-checkout-session', async (req, res) => {
 
     res.json({ url: session.url });
   } catch (error) {
-    console.error('Error creating checkout session:', error);
-    res.status(500).json({ error: error.message });
+    console.error('Error creating checkout session:', error.message);
+    console.error('Full error:', error);
+    res.status(500).json({ error: error.message, type: error.type });
   }
 });
 
